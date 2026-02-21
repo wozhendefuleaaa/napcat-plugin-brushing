@@ -21,7 +21,7 @@ jobs:
       - name: Update Plugin Index
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GH_TOKEN }}
+          github-token: ${{ secrets.INDEX_PAT }}
           script: |
             const fs = require('fs');
             const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
@@ -52,7 +52,6 @@ jobs:
             const idx = index.plugins.findIndex(p => p.id === pkg.name);
             if (idx >= 0) index.plugins[idx] = pluginData;
             else index.plugins.push(pluginData);
-            index.updateTime = new Date().toISOString();
             
             const action = idx >= 0 ? '更新至' : '新增';
             await github.rest.repos.createOrUpdateFileContents({
