@@ -1,0 +1,15 @@
+{
+  "name": "napcat-plugin-brushing",
+  "plugin": "官机互刷插件",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.mjs",
+  "description": "官机互刷DAU插件，自动与在线官机互刷提升DAU",
+  "author": "蛙蛙",
+  "license": "MIT",
+  "napcat": {
+    "tags": ["工具", "自动化"],
+    "minVersion": "4.14.0",
+    "homepage": "https://github.com/wozhendefuleaaa/napcat-plugin-brushing"
+  }
+}
