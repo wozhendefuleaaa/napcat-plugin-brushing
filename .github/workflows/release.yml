@@ -9,9 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Create zip
+        run: zip -r napcat-plugin-brushing.zip index.mjs package.json
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
+            napcat-plugin-brushing.zip
             index.mjs
             package.json

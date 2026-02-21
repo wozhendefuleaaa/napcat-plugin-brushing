@@ -1,18 +1,30 @@
-name: Update Plugin Index
+name: Submit to Plugin Index
 on:
   release:
     types: [published]
 jobs:
-  update-index:
+  submit:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Submit to NapCat Plugin Store
+      - name: Fork and update index
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          curl -X POST "https://napcat.napneko.icu/api/plugin/submit" \
-            -H "Content-Type: application/json" \
-            -d '{
-              "name": "${{ github.event.repository.name }}",
-              "repo": "${{ github.event.repository.full_name }}",
-              "version": "${{ github.event.release.tag_name }}"
-            }' || true
+          # 需要在仓库 Settings > Secrets 中添加 GH_TOKEN (有 repo 权限的 PAT)
+          # 然后手动 fork NapNeko/napcat-plugin-index 并提交 PR
+          echo "请手动向 https://github.com/NapNeko/napcat-plugin-index 提交 PR"
+          echo "添加以下内容到 plugins.v4.json:"
+          cat << 'EOF'
+          {
+            "id": "napcat-plugin-brushing",
+            "name": "官机互刷插件",
+            "version": "${{ github.event.release.tag_name }}",
+            "description": "官机互刷DAU插件，自动与在线官机互刷提升DAU",
+            "author": "蛙蛙",
+            "homepage": "https://github.com/wozhendefuleaaa/napcat-plugin-brushing",
+            "downloadUrl": "https://github.com/wozhendefuleaaa/napcat-plugin-brushing/releases/download/${{ github.event.release.tag_name }}/napcat-plugin-brushing.zip",
+            "tags": ["工具", "自动化"],
+            "minVersion": "4.14.0"
+          }
+          EOF
