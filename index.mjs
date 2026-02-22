@@ -201,7 +201,6 @@ const plugin_init = async (c) => {
 };
 
 const plugin_onmessage = async (c, event) => {
-  logger?.info(`[互刷] 收到消息事件: ${event.raw_message}`);
   if (event.post_type !== 'message') return;
   
   // 帮助命令
