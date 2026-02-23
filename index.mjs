@@ -226,8 +226,6 @@ const plugin_onmessage = async (c, event) => {
 };
 
 const plugin_onevent = async (c, event) => {
-  logger?.info(`[互刷] 收到事件: post_type=${event.post_type}, meta_event_type=${event.meta_event_type}, sub_type=${event.sub_type}`);
-  
   ctx = c;
   
   // 监听连接事件
