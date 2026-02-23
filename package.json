@@ -1,7 +1,7 @@
 {
   "name": "napcat-plugin-brushing",
   "plugin": "官机互刷插件",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "type": "module",
   "main": "index.mjs",
   "description": "官机互刷DAU插件，自动与在线官机互刷提升DAU",
